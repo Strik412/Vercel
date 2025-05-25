@@ -17,10 +17,10 @@ jobs:
         run: |
           echo "Verificando que exista index.html"
           if [ ! -f index.html ]; then
-            echo "❌ Error: index.html no existe en el directorio raíz"
+            echo "❌ Error: index.html does not exist in the root directory."
             exit 1
           fi
-          echo "✅ index.html encontrado. Continuando..."
+          echo "✅ index.html found in the root directory."
 
       - name: Install Vercel CLI
         run: npm install -g vercel
