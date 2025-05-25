@@ -1,2 +1,2 @@
 # Vercel
-GitHub Actions
+GitHub Actions.
