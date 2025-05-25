@@ -1,4 +1,4 @@
-name: Deploy to Vercel
+name: Deploy static site to Vercel
 
 on:
   push:
@@ -8,9 +8,19 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Validate project structure
+        run: |
+          echo "Verificando que exista index.html"
+          if [ ! -f index.html ]; then
+            echo "❌ Error: index.html no existe en el directorio raíz"
+            exit 1
+          fi
+          echo "✅ index.html encontrado. Continuando..."
 
       - name: Install Vercel CLI
         run: npm install -g vercel
@@ -18,6 +28,5 @@ jobs:
       - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: vercel --prod --confirm --token $VERCEL_TOKEN
+        run: |
+          vercel --prod --token $VERCEL_TOKEN --confirm --cwd .
