@@ -1,11 +1,10 @@
 # Vercel Deployment Project
 
-## 📋 Project Description
+## Project Description
 
 This is an educational project  created to learn about **distributed systems** and **continuous deployment (CD)** using **GitHub Actions** and **Vercel**.
 
-## 🎯 What is the application about?
-
+## What is the application about?
 
 This application is a simple static website that demonstrates:
 
@@ -13,7 +12,7 @@ This application is a simple static website that demonstrates:
 2. Continuous Integration/Continuous Deployment (CI/CD): Automation with GitHub Actions
 3. Hosting Platform: Automatic deployment on Vercel
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 Vercel/
@@ -29,7 +28,7 @@ Vercel/
 └── vercel.yml # Automatic deployment configuration
 ```
 
-## 📄 Components
+## Components
 
 ### 1. **index.html**
 - Simple webpage titled "My Distributed Project"
@@ -52,7 +51,7 @@ The workflow file automates deployment:
 - **Installation**: Installs Vercel CLI
 - **Deployment**: Deploys the site to Vercel in production
 
-## 🚀 Deployment Flow
+## Deployment Flow
 
 ### Deployment to Vercel (Automatic)
 
@@ -87,23 +86,23 @@ The workflow file automates deployment:
 `docker compose down
 ```
 
-## 🎓 Educational Purpose
+## Educational Purpose
 
 This project was created for educational purposes to learn about:
-- ✅ Basic web development (HTML/CSS/JavaScript)
-- ✅ Version control with Git and GitHub
-- ✅ Automation with GitHub Actions
-- ✅ Web application deployment
-- ✅ Modern hosting platforms (Vercel)
-- ✅ Distributed systems concepts
-- ✅ Containerization With Docker
+- Basic web development (HTML/CSS/JavaScript)
+- Version control with Git and GitHub
+- Automation with GitHub Actions
+- Web application deployment
+- Modern hosting platforms (Vercel)
+- Distributed systems concepts
+- Containerization With Docker
 
-## 🐳 Docker Requirements
+## Docker Requirements
 
 - Docker installed (version 20.10 or higher)
 - Docker Compose (included in Docker Desktop)
 
-## 📝 Notes
+## Notes
 
 - **Vercel**: The project uses a Vercel token stored in GitHub secrets (`VERCEL_TOKEN`)
 - **GitHub Actions**: Deployment is fully automatic without manual intervention
