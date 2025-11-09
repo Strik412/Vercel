@@ -1,114 +1,110 @@
-# Proyecto de Despliegue en Vercel
+# Vercel Deployment Project
 
-## 📋 Descripción del Proyecto
+## 📋 Project Description
 
-Este es un proyecto educativo de **Dylan** creado para aprender sobre **sistemas distribuidos** y **despliegue continuo (CD)** utilizando **GitHub Actions** y **Vercel**.
+This is an educational project  created to learn about **distributed systems** and **continuous deployment (CD)** using **GitHub Actions** and **Vercel**.
 
-## 🎯 ¿De qué trata la aplicación?
+## 🎯 What is the application about?
 
-Esta aplicación es un **sitio web estático simple** que demuestra:
 
-1. **Desarrollo Web Básico**: HTML, CSS y JavaScript puro
-2. **Integración Continua/Despliegue Continuo (CI/CD)**: Automatización con GitHub Actions
-3. **Plataforma de Hosting**: Despliegue automático en Vercel
+This application is a simple static website that demonstrates:
 
-## 🏗️ Estructura del Proyecto
+1. Basic Web Development: Pure HTML, CSS, and JavaScript
+2. Continuous Integration/Continuous Deployment (CI/CD): Automation with GitHub Actions
+3. Hosting Platform: Automatic deployment on Vercel
+
+## 🏗️ Project Structure
 
 ```
 Vercel/
-├── index.html          # Página principal del sitio
-├── styles.css          # Estilos CSS para la página
-├── script.js           # Funcionalidad JavaScript
-├── Dockerfile          # Configuración de Docker
-├── docker-compose.yml  # Orquestación de contenedores
-├── .dockerignore       # Archivos excluidos de Docker
-├── README.md           # Este archivo
+├── index.html # Site homepage
+├── styles.css # CSS styles for the page
+├── script.js # JavaScript functionality
+├── Dockerfile # Docker configuration
+├── docker-compose.yml # Container orchestration
+├── .dockerignore # Files excluded from Docker
+├── README.md # This file
 └── .github/
-    └── workflows/
-        └── vercel.yml  # Configuración de despliegue automático
+└── workflows/
+└── vercel.yml # Automatic deployment configuration
 ```
 
-## 📄 Componentes
+## 📄 Components
 
 ### 1. **index.html**
-- Página web simple con título "Mi Proyecto de distribuida"
-- Contiene un saludo: "Hola, Vercel 👋"
-- Incluye un botón interactivo
+- Simple webpage titled "My Distributed Project"
+- Contains a greeting: "Hello, Vercel 👋"
+- Includes an interactive button
 
 ### 2. **script.js**
-- Función `mostrarMensaje()` que muestra una alerta
-- Mensaje: "¡Has desplegado tu sitio en Vercel!"
+- Function `showMessage()` that displays an alert
+- Message: "You have deployed your site to Vercel!"
 
 ### 3. **styles.css**
-- Diseño centrado con fondo gris (#f0f0f0)
-- Fuente Arial
-- Estilo para botones con cursor pointer
+- Centered design with gray background (#f0f0f0)
+- Arial font
+- Style for buttons with cursor pointer
 
 ### 4. **GitHub Actions Workflow (vercel.yml)**
-El archivo de workflow automatiza el despliegue:
-- **Trigger**: Se ejecuta automáticamente al hacer push a la rama `main`
-- **Validación**: Verifica que exista el archivo `index.html`
-- **Instalación**: Instala Vercel CLI
-- **Despliegue**: Despliega el sitio a Vercel en producción
+The workflow file automates deployment:
+- **Trigger**: Executes automatically when pushing to the `main` branch
+- **Validation**: Verifies that the `index.html` file exists
+- **Installation**: Installs Vercel CLI
+- **Deployment**: Deploys the site to Vercel in production
 
-## 🚀 Flujo de Despliegue
+## 🚀 Deployment Flow
 
-### Despliegue en Vercel (Automático)
+### Deployment to Vercel (Automatic)
 
-1. El desarrollador hace push de cambios a la rama `main`
-2. GitHub Actions se activa automáticamente
-3. Se valida la estructura del proyecto
-4. Se instala Vercel CLI
-5. Se despliega el sitio a Vercel usando el token de autenticación
-6. El sitio queda disponible en producción
+1. The developer pushes changes to the `main` branch
+2. GitHub Actions is automatically triggered
+3. The project structure is validated
+4. Vercel CLI is installed
+5. The site is deployed to Vercel using the authentication token
+6. The site It is now available in production.
 
-### Despliegue con Docker (Local)
+### Deployment with Docker (Local)
 
-#### Opción 1: Docker
+#### Option 1: Docker
 ```bash
-# Construir la imagen
-docker build -t vercel-app .
+# Build the image
+`docker build -t vercel-app .`
 
-# Ejecutar el contenedor
-docker run -d -p 8080:80 vercel-app
+` # Run the container
+`docker run -d -p 8080:80 vercel-app
 
-# La aplicación estará disponible en http://localhost:8080
+# The application will be available at http://localhost:8080
 ```
 
-#### Opción 2: Docker Compose (Recomendado)
+#### Option 2: Docker Compose (Recommended)
 ```bash
-# Iniciar el contenedor
-docker compose up -d
+# Start the container
+`docker compose up -d
 
-# La aplicación estará disponible en http://localhost:8080
+# The application will be available at http://localhost:8080
 
-# Detener el contenedor
-docker compose down
+# Stop the container
+`docker compose down
 ```
 
-## 🎓 Propósito Educativo
+## 🎓 Educational Purpose
 
-Este proyecto fue creado con fines educativos para aprender sobre:
-- ✅ Desarrollo web básico (HTML/CSS/JavaScript)
-- ✅ Control de versiones con Git y GitHub
-- ✅ Automatización con GitHub Actions
-- ✅ Despliegue de aplicaciones web
-- ✅ Plataformas de hosting modernas (Vercel)
-- ✅ Conceptos de sistemas distribuidos
-- ✅ Containerización con Docker
+This project was created for educational purposes to learn about:
+- ✅ Basic web development (HTML/CSS/JavaScript)
+- ✅ Version control with Git and GitHub
+- ✅ Automation with GitHub Actions
+- ✅ Web application deployment
+- ✅ Modern hosting platforms (Vercel)
+- ✅ Distributed systems concepts
+- ✅ Containerization With Docker
 
-## 👤 Autor
+## 🐳 Docker Requirements
 
-**Dylan** - Proyecto de Distribuida
+- Docker installed (version 20.10 or higher)
+- Docker Compose (included in Docker Desktop)
 
-## 🐳 Requisitos para Docker
+## 📝 Notes
 
-- Docker instalado (versión 20.10 o superior)
-- Docker Compose (incluido en Docker Desktop)
-
-## 📝 Notas
-
-- **Vercel**: El proyecto utiliza un token de Vercel almacenado en los secretos de GitHub (`VERCEL_TOKEN`)
-- **GitHub Actions**: El despliegue es completamente automático sin intervención manual
-- **Docker**: Utiliza nginx:alpine para servir los archivos estáticos de forma ligera y eficiente
-- Es un ejemplo práctico de DevOps y CI/CD
+- **Vercel**: The project uses a Vercel token stored in GitHub secrets (`VERCEL_TOKEN`)
+- **GitHub Actions**: Deployment is fully automatic without manual intervention
+- **Docker**: Uses nginx:alpine to serve static files in a lightweight and efficient way
