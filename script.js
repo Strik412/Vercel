@@ -1,6 +1,6 @@
 function mostrarMensaje() {
-  alert('¡Has desplegado tu sitio en Vercel!');
+  alert('You have deployed your site on Vercel!');
 }
 function mostrarMensaje2() {
-  alert('¡Has desplegado tu sitio en Vercel!');
+  alert('You have deployed your site on Vercel!');
 }
