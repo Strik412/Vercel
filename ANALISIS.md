@@ -138,6 +138,57 @@
 
 ---
 
+#### 6. **Dockerfile**
+
+**Descripción**: Configuración para containerizar la aplicación
+
+**Contenido**:
+- Usa imagen base: `nginx:alpine` (ligera, ~23MB)
+- Copia archivos estáticos al directorio de nginx: `/usr/share/nginx/html/`
+- Expone el puerto 80
+- Nginx se ejecuta en primer plano (daemon off)
+
+**Ventajas**:
+- Imagen pequeña y eficiente
+- Fácil de distribuir y desplegar
+- Entorno consistente en cualquier sistema
+
+---
+
+#### 7. **docker-compose.yml**
+
+**Descripción**: Orquestación simplificada de contenedores
+
+**Configuración**:
+- Servicio: `web`
+- Puerto mapeado: `8080:80` (host:container)
+- Nombre del contenedor: `vercel-app`
+- Política de reinicio: `unless-stopped`
+
+**Uso**:
+- Simplifica el proceso de build y ejecución
+- Un solo comando para levantar la aplicación
+- Ideal para desarrollo local
+
+---
+
+#### 8. **.dockerignore**
+
+**Descripción**: Excluye archivos innecesarios del build de Docker
+
+**Archivos excluidos**:
+- Repositorio Git (.git, .github)
+- Documentación (README.md, ANALISIS.md)
+- Node modules (si existieran)
+- Archivos del sistema operativo
+
+**Beneficio**:
+- Reduce tamaño de la imagen
+- Build más rápido
+- Mayor seguridad (no incluye información sensible)
+
+---
+
 ## 🎯 Propósito y Objetivo del Proyecto
 
 ### Contexto Educativo
@@ -171,6 +222,11 @@ Este proyecto es parte de un curso o materia de **Sistemas Distribuidos** donde 
    - Disponibilidad y escalabilidad
    - Infraestructura distribuida
 
+6. **Containerización**
+   - Docker para portabilidad
+   - Aislamiento de aplicaciones
+   - Despliegue consistente en múltiples entornos
+
 ### Funcionalidad Real
 
 **¿Qué hace la aplicación?**
@@ -187,28 +243,57 @@ Este proyecto es parte de un curso o materia de **Sistemas Distribuidos** donde 
 
 ## 🔄 Flujo de Trabajo Completo
 
-### Desarrollo Local
+### Opción A: Despliegue en Vercel (Producción)
+
+#### Desarrollo Local
 1. Dylan edita archivos HTML/CSS/JS localmente
 2. Prueba cambios en su navegador
 
-### Control de Versiones
+#### Control de Versiones
 3. Hace commit de los cambios con Git
 4. Push a la rama main en GitHub
 
-### Automatización (GitHub Actions)
+#### Automatización (GitHub Actions)
 5. Se activa el workflow automáticamente
 6. GitHub Actions ejecuta el job "deploy"
 7. Se valida la estructura del proyecto
 8. Se instala Vercel CLI
 
-### Despliegue
+#### Despliegue
 9. Vercel CLI despliega el sitio
 10. El sitio queda disponible en una URL de Vercel
 11. Los cambios son visibles inmediatamente en producción
 
-### Resultado
+#### Resultado
 12. El sitio está disponible públicamente
 13. Cualquier nuevo push repite el proceso automáticamente
+
+---
+
+### Opción B: Despliegue con Docker (Local/Desarrollo)
+
+#### Build de la Imagen
+1. Dylan ejecuta `docker build -t vercel-app .`
+2. Docker descarga la imagen base nginx:alpine
+3. Copia los archivos estáticos al contenedor
+4. Crea la imagen lista para usar
+
+#### Ejecución
+5. Ejecuta `docker run -d -p 8080:80 vercel-app`
+   - O alternativamente: `docker compose up -d`
+6. El contenedor se inicia con nginx
+7. Los archivos estáticos se sirven en el puerto 8080
+
+#### Resultado
+8. La aplicación está disponible en http://localhost:8080
+9. Entorno idéntico sin importar el sistema operativo
+10. Fácil de compartir y distribuir
+
+#### Ventajas del enfoque Docker
+- ✅ No requiere instalación de servidor web local
+- ✅ Entorno consistente entre desarrollo y producción
+- ✅ Fácil limpieza y gestión de recursos
+- ✅ Ideal para testing local antes de push a Vercel
 
 ---
 
@@ -224,10 +309,13 @@ Este proyecto es parte de un curso o materia de **Sistemas Distribuidos** donde 
 - **GitHub**: Hosting del repositorio
 - **GitHub Actions**: CI/CD
 - **Vercel**: Plataforma de hosting
+- **Docker**: Containerización
+- **Docker Compose**: Orquestación de contenedores
 
 ### Herramientas
 - **Vercel CLI**: Herramienta de línea de comandos
 - **npm**: Gestor de paquetes (para instalar Vercel CLI)
+- **nginx**: Servidor web (dentro del contenedor Docker)
 
 ---
 

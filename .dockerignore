@@ -1,0 +1,15 @@
+# Git
+.git
+.github
+
+# Documentation
+README.md
+ANALISIS.md
+
+# Node modules (if any in future)
+node_modules
+npm-debug.log
+
+# OS files
+.DS_Store
+Thumbs.db

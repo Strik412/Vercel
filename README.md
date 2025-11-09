@@ -19,6 +19,9 @@ Vercel/
 ├── index.html          # Página principal del sitio
 ├── styles.css          # Estilos CSS para la página
 ├── script.js           # Funcionalidad JavaScript
+├── Dockerfile          # Configuración de Docker
+├── docker-compose.yml  # Orquestación de contenedores
+├── .dockerignore       # Archivos excluidos de Docker
 ├── README.md           # Este archivo
 └── .github/
     └── workflows/
@@ -50,12 +53,38 @@ El archivo de workflow automatiza el despliegue:
 
 ## 🚀 Flujo de Despliegue
 
+### Despliegue en Vercel (Automático)
+
 1. El desarrollador hace push de cambios a la rama `main`
 2. GitHub Actions se activa automáticamente
 3. Se valida la estructura del proyecto
 4. Se instala Vercel CLI
 5. Se despliega el sitio a Vercel usando el token de autenticación
 6. El sitio queda disponible en producción
+
+### Despliegue con Docker (Local)
+
+#### Opción 1: Docker
+```bash
+# Construir la imagen
+docker build -t vercel-app .
+
+# Ejecutar el contenedor
+docker run -d -p 8080:80 vercel-app
+
+# La aplicación estará disponible en http://localhost:8080
+```
+
+#### Opción 2: Docker Compose (Recomendado)
+```bash
+# Iniciar el contenedor
+docker compose up -d
+
+# La aplicación estará disponible en http://localhost:8080
+
+# Detener el contenedor
+docker compose down
+```
 
 ## 🎓 Propósito Educativo
 
@@ -66,13 +95,20 @@ Este proyecto fue creado con fines educativos para aprender sobre:
 - ✅ Despliegue de aplicaciones web
 - ✅ Plataformas de hosting modernas (Vercel)
 - ✅ Conceptos de sistemas distribuidos
+- ✅ Containerización con Docker
 
 ## 👤 Autor
 
 **Dylan** - Proyecto de Distribuida
 
+## 🐳 Requisitos para Docker
+
+- Docker instalado (versión 20.10 o superior)
+- Docker Compose (incluido en Docker Desktop)
+
 ## 📝 Notas
 
-- El proyecto utiliza un token de Vercel almacenado en los secretos de GitHub (`VERCEL_TOKEN`)
-- El despliegue es completamente automático sin intervención manual
+- **Vercel**: El proyecto utiliza un token de Vercel almacenado en los secretos de GitHub (`VERCEL_TOKEN`)
+- **GitHub Actions**: El despliegue es completamente automático sin intervención manual
+- **Docker**: Utiliza nginx:alpine para servir los archivos estáticos de forma ligera y eficiente
 - Es un ejemplo práctico de DevOps y CI/CD
